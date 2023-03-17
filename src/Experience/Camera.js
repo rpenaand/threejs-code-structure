@@ -3,15 +3,14 @@ import { OrbitControls } from 'three/examples/jsm/controls/orbitcontrols';
 import Experience from './Experience';
 
 export default class Camera {
-  fov = 35;
-  near = 0.1;
-  far = 100;
-
   constructor() {
     this.experience = new Experience();
     this.sizes = this.experience.sizes;
     this.scene = this.experience.scene;
     this.canvas = this.experience.canvas;
+    this.fov = 35;
+    this.near = 0.1;
+    this.far = 100;
     this.setInstance();
     this.setOrbitControls();
   }
@@ -29,7 +28,7 @@ export default class Camera {
 
   setOrbitControls() {
     this.controls = new OrbitControls(this.instance, this.canvas);
-    // controls.enableDamping = true;
+    controls.enableDamping = true;
   }
 
   resize() {
@@ -38,6 +37,6 @@ export default class Camera {
   }
 
   update() {
-    // this.controls.update();
+    this.controls.update();
   }
 }
